@@ -1,4 +1,4 @@
-const {postFixEvaluation} = require('../src/expressoes');
+const {postFixEvaluation} = require('../src/resolveExpressoes');
 
 
 describe('postFixEvaluation', () => {

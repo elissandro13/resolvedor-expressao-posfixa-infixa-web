@@ -1,4 +1,4 @@
-const { postFixEvaluation } = require("./expressoes");
+const { postFixEvaluation } = require("./resolveExpressoes");
 
 let expression = "10 5 / 2 3 -";
 let resultado = postFixEvaluation(expression);

@@ -17,11 +17,11 @@ function operation(x, y, op) {
         } else {
             return x / y;
         }
-    } else {
+    } else if (op === "-") {
         return x - y;
     }
     
-    
+    throw new Error(`Operador desconhecido: ${op}`);
 }
 
 

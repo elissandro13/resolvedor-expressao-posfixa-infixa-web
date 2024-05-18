@@ -25,7 +25,9 @@ describe('Stack', () => {
   });
 
   test('deve retornar "Pilha vazia" ao desempilhar de uma pilha vazia', () => {
-    expect(stack.pop()).toBe("Pilha vazia");
+    stack.push(10);
+    stack.pop();
+    expect(() => stack.pop()).toThrowError("Pilha vazia");
   });
 
   test('deve retornar o elemento do topo sem removê-lo', () => {
@@ -36,7 +38,7 @@ describe('Stack', () => {
   });
 
   test('deve retornar "Pilha vazia" ao pegar o elemento do topo de uma pilha vazia', () => {
-    expect(stack.peek()).toBe("Pilha vazia");
+    expect(() => stack.peek()).toThrowError("Pilha vazia");
   });
 
   test('deve indicar quando está vazia', () => {

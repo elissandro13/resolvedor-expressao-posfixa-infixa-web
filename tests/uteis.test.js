@@ -92,4 +92,10 @@ describe('operation', () => {
         operation(10, 0, '/');
       }).toThrow("Divisão por 0 impossível");
     });
+
+    test('Deve lançar uma exceção ao tentar utilizar um operador desconhecido', () => {
+        expect(() => {
+          operation(10, 1, '^');
+        }).toThrow("Operador desconhecido: ^");
+      });
 });

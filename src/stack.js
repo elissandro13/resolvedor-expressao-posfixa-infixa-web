@@ -16,7 +16,7 @@ class Stack {
 
         // Underflow se a pilha está vazia
         if (this.isEmpty()) {
-            return "Pilha vazia";
+            throw new Error("Pilha vazia");
         }
 
         return this.items.pop();
@@ -26,7 +26,7 @@ class Stack {
     peek() {
 
         if (this.isEmpty()) {
-            return "Pilha vazia";
+            throw new Error("Pilha vazia");
         }
 
         return this.items[this.items.length - 1];

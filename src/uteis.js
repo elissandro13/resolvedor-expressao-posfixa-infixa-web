@@ -6,8 +6,28 @@ function isNumber(str) {
     return !isNaN(parseFloat(str)) && isFinite(str);
 }
 
+function operation(x, y, op) {
+    if (op === "+") {
+        return x + y;
+    } else if (op === "*") {
+        return x * y;
+    } else if (op === "/") {
+        if (y === 0) {
+            throw new Error("Divisão por 0 impossível");
+        } else {
+            return x / y;
+        }
+    } else {
+        return x - y;
+    }
+    
+    
+}
+
+
 
 module.exports = {
     isOperator,
-    isNumber
+    isNumber,
+    operation
 };

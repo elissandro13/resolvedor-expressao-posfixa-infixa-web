@@ -1,0 +1,25 @@
+{
+  "name": "resolvedor-expressao-posfixa-infixa-web",
+  "version": "1.0.0",
+  "description": "Um resolver de expressões numéricas (infixas e posfixas). O sistema tem suporte a modificação da representação da expressão numérica, assim como a possibilidade de solução automática da expressão.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elissandro13/resolvedor-expressao-posfixa-infixa-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elissandro13/resolvedor-expressao-posfixa-infixa-web/issues"
+  },
+  "homepage": "https://github.com/elissandro13/resolvedor-expressao-posfixa-infixa-web#readme",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}

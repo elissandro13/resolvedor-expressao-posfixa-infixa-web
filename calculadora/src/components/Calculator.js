@@ -13,12 +13,10 @@ const Calculator = () => {
     const display = displayRef.current;
     if (display) {
       if (display.scrollWidth > display.clientWidth) {
-        display.style.height = `${display.scrollHeight}px`;
-      } else {
-        display.style.height = 'auto';
+        display.scrollTo(display.scrollWidth, 0);
       }
     }
-  }, [input]);
+  }, [input]);  
 
   const handleClick = (value) => {
     if (value === '=') {

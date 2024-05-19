@@ -7,7 +7,9 @@ function convertPostfixInfix(expression) {
     const tokens = expression.split(" ");
     
     for (let token of tokens) {
-        if (isNumber(token)) {
+        if (token == "" || token == " ")
+            continue;
+        else if (isNumber(token)) {
             stack.push(token); // Se o token for um número, empilhe-o
         } else if (isOperator(token)) {
             if (stack.size() < 2) {
@@ -15,9 +17,12 @@ function convertPostfixInfix(expression) {
             }
             const rightOperand = stack.pop();
             const leftOperand = stack.pop();
-            const infixExpression = `(${leftOperand} ${token} ${rightOperand})`;
+            const infixExpression = `( ${leftOperand} ${token} ${rightOperand} )`;
             stack.push(infixExpression); // Se o token for um operador, desempilhe os operandos, crie uma expressão infixa e empilhe-a
         } else {
+            //console.log(`Token  -${token}-`);
+            //console.log(stack.printStack());
+            //console.log(token == "");
             throw new Error("Expressão pós-fixa inválida: token inválido encontrado");
         }
     }

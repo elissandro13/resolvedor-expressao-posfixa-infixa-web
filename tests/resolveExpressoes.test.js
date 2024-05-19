@@ -1,4 +1,4 @@
-const {postFixEvaluation} = require('../src/resolveExpressoes');
+const {postFixEvaluation, inFixEvaluation} = require('../src/resolveExpressoes');
 
 
 describe('postFixEvaluation', () => {
@@ -43,19 +43,19 @@ describe('postFixEvaluation', () => {
     });
   
     test('Avaliar expressão vazia', () => { 
-      expect(() => postFixEvaluation('')).toThrowError('Expressão pós-fixa vazia');
+      expect(() => postFixEvaluation('')).toThrowError(new Error('Expressão pós-fixa vazia'));
     });
   
     test('Avaliar expressão com operando inválido', () => { 
-      expect(() => postFixEvaluation('abc 2 +')).toThrowError('Operador desconhecido: abc');
+      expect(() => postFixEvaluation('abc 2 +')).toThrowError(new Error('Operador desconhecido: abc'));
     });
   
     test('Avaliar expressão com operador inválido', () => { 
-      expect(() => postFixEvaluation('2 3 @')).toThrowError('Operador desconhecido: @');
+      expect(() => postFixEvaluation('2 3 @')).toThrowError(new Error('Operador desconhecido: @'));
     });
   
     test('Avaliar expressão com contagem incorreta de operandos', () => { 
-      expect(() => postFixEvaluation('2 3 + 4')).toThrowError('Expressão pós-fixa inválida');
+      expect(() => postFixEvaluation('2 3 + 4')).toThrowError(new Error('Expressão pós-fixa inválida'));
     });
   
     test('Deve avaliar uma expressão pós-fixa com todas as operações', () => {
@@ -80,4 +80,116 @@ describe('postFixEvaluation', () => {
         const expression = "9.874522 7.929620 * 8.681109 + 5.303303 / 3.118387 7.559106 + 7.215866 / +";
         expect(postFixEvaluation(expression)).toBeCloseTo(17.878824);
       });
+
+      test('Deve avaliar a expressão pós-fixa complexa corretamente com número float', () => {
+        const expression = "2.337697 6.086307 - 0.125789 - 9.071004 4.981880 * /";
+        expect(postFixEvaluation(expression)).toBeCloseTo(-0.0857345);
+      });
+
+      test('Deve avaliar a expressão pós-fixa complexa corretamente com número float', () => {
+        const expression = "7.325484  2.298093  2.321958  /  4.759999  *  *";
+        expect(postFixEvaluation(expression)).toBeCloseTo(34.5109);
+      });
+});
+
+
+describe('inFixEvaluation', () => {
+  test('Deve avaliar uma expressão infixa simples', () => {
+    const expression = "3 + 5";
+    expect(inFixEvaluation(expression)).toBe(8);
+  });
+
+  test('Deve avaliar uma expressão infixa com múltiplas operações', () => {
+    const expression = "10 + 2 * 6";
+    expect(inFixEvaluation(expression)).toBe(22);
+  });
+
+  test('Deve avaliar uma expressão infixa com parênteses', () => {
+    const expression = "100 * ( 2 + 12 ) / 14";
+    expect(inFixEvaluation(expression)).toBe(100);
+  });
+
+  test('Deve avaliar uma expressão infixa com números decimais', () => {
+    const expression = "3.5 + 2.5";
+    expect(inFixEvaluation(expression)).toBe(6);
+  });
+
+  test('Deve lançar uma exceção para divisão por zero', () => {
+    const expression = "10 / 0";
+    expect(() => {
+      inFixEvaluation(expression);
+    }).toThrow(new Error("Divisão por 0 impossível"));
+  });
+
+  test('Deve avaliar uma expressão infixa complexa', () => {
+    const expression = "3 + 5 * 2 - 8 / 4";
+    expect(inFixEvaluation(expression)).toBe(11);
+  });
+
+  test('Deve avaliar uma expressão infixa com números negativos', () => {
+    const expression = "-3 + 5";
+    expect(inFixEvaluation(expression)).toBe(2);
+  });
+
+  test('Deve avaliar uma expressão infixa com todos os operadores', () => {
+    const expression = "2 + 3 * 4 - 5 / (6 + 1)";
+    expect(inFixEvaluation(expression)).toBeCloseTo(13.285714285714286, 5);
+  });
+
+  test('Deve avaliar uma expressão infixa com múltiplos níveis de parênteses', () => {
+    const expression = "10 + (2 * 3 + (5 - 2) * 2) * 2";
+    expect(inFixEvaluation(expression)).toBe(34);
+  });
+
+  test('Deve avaliar uma expressão infixa com parênteses aninhados', () => {
+    const expression = "((2 + 3) * 4) - (5 / (1 + 1))";
+    expect(inFixEvaluation(expression)).toBe(17.5);
+  });
+
+  test('Deve avaliar uma expressão infixa com parênteses vazios', () => {
+    const expression = "3 + () + 5";
+    expect(() => {
+      inFixEvaluation(expression);
+    }).toThrow(new Error("Pilha vazia"));
+  });
+
+  test('Deve avaliar uma expressão infixa com operadores dentro de parênteses', () => {
+    const expression = "(3 + 2) * (5 - 1)";
+    expect(inFixEvaluation(expression)).toBe(20);
+  });
+
+  test('Deve avaliar uma expressão infixa com parênteses redundantes', () => {
+    const expression = "((3)) + (((4)))";
+    expect(inFixEvaluation(expression)).toBe(7);
+  });
+
+  test('Deve avaliar uma expressão infixa com parênteses e todos os operadores', () => {
+    const expression = "((2 + 3) * (4 - 2) / (1 + 1)) + (3 * (2 - 1))";
+    expect(inFixEvaluation(expression)).toBe(8);
+  });
+
+  test('Avaliar expressão infixa vazia', () => { 
+    expect(() => inFixEvaluation('')).toThrowError(new Error('Expressão infixa vazia'));
+  });
+
+  test('Deve avaliar uma expressão infixa com parênteses e o primeiro termo negativo', () => {
+    const expression = "((-2.5 + 10))";
+    expect(inFixEvaluation(expression)).toBe(7.5);
+  });
+
+  test('Deve avaliar uma expressão infixa com parênteses e o segundo termo negativo', () => {
+    const expression = "((-2 + -1002))";
+    expect(inFixEvaluation(expression)).toBe(-1004);
+  });
+
+  test('Deve avaliar uma expressão complexa', () => {
+    const expression = "( ( ( 2.337697 - 6.086307 ) - 0.125789 ) / ( 9.071004 * 4.981880 ) )";
+    expect(inFixEvaluation(expression)).toBeCloseTo(-0.0857345);
+  });
+
+  test('Deve avaliar uma segunda expressão complexa', () => {
+    const expression = "( 7.325484 * ( ( 2.298093 / 2.321958 ) * 4.759999 ) )";
+    expect(inFixEvaluation(expression)).toBeCloseTo(34.5109);
+  });
+
 });

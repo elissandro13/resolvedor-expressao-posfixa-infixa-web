@@ -24,10 +24,21 @@ function operation(x, y, op) {
     throw new Error(`Operador desconhecido: ${op}`);
 }
 
+function precedence(op) {
+    if (op === '+' || op === '-') {
+        return 1;
+    }
+    if (op === '*' || op === '/') {
+        return 2;
+    }
+    return -1;
+}
+
 
 
 module.exports = {
     isOperator,
     isNumber,
-    operation
+    operation,
+    precedence
 };

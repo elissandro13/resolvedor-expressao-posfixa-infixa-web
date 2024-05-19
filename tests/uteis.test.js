@@ -1,5 +1,5 @@
 const Stack = require('../src/stack'); // Importar a classe Stack
-const { isNumber, isOperator, operation } = require('../src/uteis'); // Importe as funções uteis
+const { isNumber, isOperator, operation, precedence } = require('../src/uteis'); // Importe as funções uteis
 
 describe('isNumber', () => {
     test('Deve retornar true para uma string que representa um número', () => {
@@ -99,3 +99,35 @@ describe('operation', () => {
         }).toThrow("Operador desconhecido: ^");
       });
 });
+
+describe('precedence', () => {
+    test('Deve retornar 1 para operadores de soma (+)', () => {
+      expect(precedence('+')).toBe(1);
+    });
+  
+    test('Deve retornar 1 para operadores de subtração (-)', () => {
+      expect(precedence('-')).toBe(1);
+    });
+  
+    test('Deve retornar 2 para operadores de multiplicação (*)', () => {
+      expect(precedence('*')).toBe(2);
+    });
+  
+    test('Deve retornar 2 para operadores de divisão (/)', () => {
+      expect(precedence('/')).toBe(2);
+    });
+  
+    test('Deve retornar -1 para operadores desconhecidos', () => {
+      expect(precedence('%')).toBe(-1);
+      expect(precedence('^')).toBe(-1);
+      expect(precedence('(')).toBe(-1);
+      expect(precedence(')')).toBe(-1);
+    });
+  
+    test('Deve retornar -1 para strings vazias e caracteres não operadores', () => {
+      expect(precedence('')).toBe(-1);
+      expect(precedence('a')).toBe(-1);
+      expect(precedence('1')).toBe(-1);
+      expect(precedence('=')).toBe(-1);
+    });
+  });

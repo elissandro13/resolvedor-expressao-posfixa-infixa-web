@@ -34,11 +34,21 @@ function precedence(op) {
     return -1;
 }
 
+function isOperand(c) {
+    return /\d/.test(c) || c === '.';
+}
+
+function replaceAll(str, find, replace) {
+    return str.split(find).join(replace);
+}
+
 
 
 module.exports = {
     isOperator,
     isNumber,
     operation,
-    precedence
+    precedence,
+    isOperand,
+    replaceAll
 };

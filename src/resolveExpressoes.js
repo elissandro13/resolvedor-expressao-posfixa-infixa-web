@@ -1,4 +1,4 @@
-const { isOperator, isNumber, operation, precedence } = require("./uteis");
+const { isOperator, isNumber, operation, precedence, isOperand, replaceAll } = require("./uteis");
 const Stack = require('./stack');
 
 function postFixEvaluation(expression){
@@ -26,11 +26,7 @@ function postFixEvaluation(expression){
                 result = operation(left, right, token);
                 
                 stack.push(result)
-                //console.log(stack.printStack());
             } else {
-                //console.log(`Token  -${token}-`);
-                //console.log(stack.printStack());
-                //console.log(token == "")
                 if(!(token == "" || token == " "))
                     throw new Error(`Operador desconhecido: ${token}`);
             }
@@ -71,7 +67,7 @@ function inFixEvaluation(expression) {
             let decimal = false;
             let decimalPlace = 0.1;
 
-            while (i < expression.length && ((expression[i] >= '0' && expression[i] <= '9') || expression[i] === '.')) {
+            while (i < expression.length && isOperand(expression[i])) {
                 if (expression[i] === '.') {
                     decimal = true;
                 } else if (decimal) {
@@ -89,7 +85,7 @@ function inFixEvaluation(expression) {
         else if (expression[i] >= '0' && expression[i] <= '9') {
             let val = 0;
 
-            while (i < expression.length && (expression[i] >= '0' && expression[i] <= '9' || expression[i] === '.')) {
+            while (i < expression.length && isOperand(expression[i])) {
                 if (expression[i] === '.') {
                     let decimal = 0;
                     i++;

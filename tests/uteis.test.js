@@ -1,5 +1,5 @@
 const Stack = require('../src/stack'); // Importar a classe Stack
-const { isNumber, isOperator, operation, precedence } = require('../src/uteis'); // Importe as funções uteis
+const { isNumber, isOperator, operation, precedence, isOperand, replaceAll } = require('../src/uteis'); // Importe as funções uteis
 
 describe('isNumber', () => {
     test('Deve retornar true para uma string que representa um número', () => {
@@ -131,3 +131,124 @@ describe('precedence', () => {
       expect(precedence('=')).toBe(-1);
     });
   });
+
+  describe('isOperand', () => {
+    test('Deve retornar true para dígitos', () => {
+        expect(isOperand('0')).toBe(true);
+        expect(isOperand('1')).toBe(true);
+        expect(isOperand('2')).toBe(true);
+        expect(isOperand('3')).toBe(true);
+        expect(isOperand('4')).toBe(true);
+        expect(isOperand('5')).toBe(true);
+        expect(isOperand('6')).toBe(true);
+        expect(isOperand('7')).toBe(true);
+        expect(isOperand('8')).toBe(true);
+        expect(isOperand('9')).toBe(true);
+    });
+
+    test('Deve retornar true para ponto decimal', () => {
+        expect(isOperand('.')).toBe(true);
+    });
+
+    test('Deve retornar false para operadores', () => {
+        expect(isOperand('+')).toBe(false);
+        expect(isOperand('-')).toBe(false);
+        expect(isOperand('*')).toBe(false);
+        expect(isOperand('/')).toBe(false);
+    });
+
+    test('Deve retornar false para caracteres não numéricos', () => {
+        expect(isOperand('a')).toBe(false);
+        expect(isOperand(' ')).toBe(false);
+        expect(isOperand('!')).toBe(false);
+    });
+
+    test('Deve retornar false para strings vazias', () => {
+        expect(isOperand('')).toBe(false);
+    });
+
+    test('Deve retornar false para caracteres especiais', () => {
+        expect(isOperand('@')).toBe(false);
+        expect(isOperand('#')).toBe(false);
+        expect(isOperand('$')).toBe(false);
+        expect(isOperand('%')).toBe(false);
+        expect(isOperand('^')).toBe(false);
+        expect(isOperand('&')).toBe(false);
+        expect(isOperand('(')).toBe(false);
+        expect(isOperand(')')).toBe(false);
+    });
+});
+
+describe('replaceAll', () => {
+    test('Deve substituir todas as ocorrências de um substring por outro substring', () => {
+        const str = "hello world, hello universe";
+        const search = "hello";
+        const replacement = "hi";
+        const expected = "hi world, hi universe";
+        expect(replaceAll(str, search, replacement)).toBe(expected);
+    });
+
+    test('Deve retornar a string original se o substring de busca não for encontrado', () => {
+        const str = "hello world";
+        const search = "bye";
+        const replacement = "hi";
+        const expected = "hello world";
+        expect(replaceAll(str, search, replacement)).toBe(expected);
+    });
+
+    test('Deve funcionar corretamente com strings vazias', () => {
+        const str = "";
+        const search = "hello";
+        const replacement = "hi";
+        const expected = "";
+        expect(replaceAll(str, search, replacement)).toBe(expected);
+    });
+
+    test('Deve substituir corretamente caracteres especiais', () => {
+        const str = "a+b+c+d";
+        const search = "+";
+        const replacement = "-";
+        const expected = "a-b-c-d";
+        expect(replaceAll(str, search, replacement)).toBe(expected);
+    });
+
+    test('Deve substituir corretamente um substring que aparece no início e no final da string', () => {
+        const str = "start and end start";
+        const search = "start";
+        const replacement = "finish";
+        const expected = "finish and end finish";
+        expect(replaceAll(str, search, replacement)).toBe(expected);
+    });
+
+    test('Deve substituir corretamente substrings adjacentes', () => {
+        const str = "aaa";
+        const search = "a";
+        const replacement = "b";
+        const expected = "bbb";
+        expect(replaceAll(str, search, replacement)).toBe(expected);
+    });
+
+    test('Deve substituir corretamente substrings que incluem espaços', () => {
+        const str = "one two three";
+        const search = " ";
+        const replacement = "_";
+        const expected = "one_two_three";
+        expect(replaceAll(str, search, replacement)).toBe(expected);
+    });
+
+    test('Deve substituir corretamente um substring por uma string vazia', () => {
+        const str = "remove all spaces";
+        const search = " ";
+        const replacement = "";
+        const expected = "removeallspaces";
+        expect(replaceAll(str, search, replacement)).toBe(expected);
+    });
+
+    test('Deve substituir corretamente dois espaços por um', () => {
+        const str = "this  is  a  test";
+        const search = "  ";
+        const replacement = " ";
+        const expected = "this is a test";
+        expect(replaceAll(str, search, replacement)).toBe(expected);
+    });
+});

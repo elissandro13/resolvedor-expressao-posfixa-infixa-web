@@ -87,7 +87,7 @@ describe('postFixEvaluation', () => {
       });
 
       test('Deve avaliar a expressão pós-fixa complexa corretamente com número float', () => {
-        const expression = "7.325484  2.298093  2.321958  /  4.759999  *  *";
+        const expression = "7.325484 2.298093 2.321958 / 4.759999 * *";
         expect(postFixEvaluation(expression)).toBeCloseTo(34.5109);
       });
 });

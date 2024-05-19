@@ -1,5 +1,4 @@
-const Stack = require('../src/stack'); // Importar a classe Stack
-const { isNumber, isOperator, operation, precedence, isOperand, replaceAll } = require('../src/uteis'); // Importe as funções uteis
+import { isNumber, isOperator, operation, precedence, isOperand, replaceAll } from '../utils/uteis';
 
 describe('isNumber', () => {
     test('Deve retornar true para uma string que representa um número', () => {

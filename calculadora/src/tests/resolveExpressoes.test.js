@@ -1,5 +1,4 @@
-const {postFixEvaluation, inFixEvaluation} = require('../src/resolveExpressoes');
-
+import { postFixEvaluation, inFixEvaluation } from '../utils/resolveExpressoes';
 
 describe('postFixEvaluation', () => {
         test('Avaliar expressão de adição simples', () => { 

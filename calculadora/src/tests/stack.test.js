@@ -1,4 +1,4 @@
-const Stack = require('../src/stack'); // Importar a classe Stack
+import Stack from '../utils/stack'; // Importar a classe Stack
 
 describe('Stack', () => {
   let stack; // Variável para armazenar instância da pilha

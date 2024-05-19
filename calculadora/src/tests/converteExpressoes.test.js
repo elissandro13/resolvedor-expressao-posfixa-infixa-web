@@ -1,4 +1,4 @@
-const {convertPostfixToInfix, convertInfixToPostFix} = require('../src/converteExpressoes');
+import { convertPostfixToInfix, convertInfixToPostFix } from '../utils/converteExpressoes';
 
 describe('convertPostfixToInfix', () => {
     test('Deve converter uma expressão pós-fixa simples para infixa', () => {
@@ -101,7 +101,4 @@ describe('convertInfixToPostFix', () => {
     const expected = "2.337697 6.086307 - 0.125789 - 9.071004 4.981880 * /";
     expect(convertInfixToPostFix(expression)).toBe(expected);
   });
-
-
-
 });

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-const Display = ({ value }) => {
+const Display = forwardRef((props, ref) => {
   return (
-    <div className="display">
-      {value}
+    <div ref={ref} className="display">
+      {props.value}
     </div>
   );
-};
+});
 
 export default Display;

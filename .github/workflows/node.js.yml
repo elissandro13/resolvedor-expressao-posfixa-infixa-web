@@ -15,10 +15,8 @@ jobs:
     strategy:
       matrix:
         node: [ 14, 16, 18 ]
-    name: Node ${{ matrix.node }} sample
+    name: Node ${{ matrix.node }} version
     steps:
-      - name: Check for package-lock.json
-        run: ls
       - uses: actions/checkout@v4
       - name: Setup node
         uses: actions/setup-node@v4

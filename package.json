@@ -1,6 +1,7 @@
 {
     "name": "resolvedor-expressao-posfixa-infixa-web",
     "version": "1.0.0",
+    "homepage": "https://elissandro13.github.io/resolvedor-expressao-posfixa-infixa-web",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.5",
@@ -19,6 +20,8 @@
         "test": "tests"
     },
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
@@ -49,7 +52,8 @@
     "description": "Um resolver de expressões numéricas (infixas e posfixas). O sistema tem suporte a modificação da representação da expressão numérica, assim como a possibilidade de solução automática da expressão.",
     "main": "jest.config.js",
     "devDependencies": {
-        "@babel/plugin-proposal-private-property-in-object": "^7.19.6"
+        "@babel/plugin-proposal-private-property-in-object": "^7.19.6",
+        "gh-pages": "^6.1.1"
     },
     "keywords": [],
     "author": "",

@@ -34,7 +34,7 @@ class Stack {
 
     // Verifica se a pilha está vazia
     isEmpty() {
-        return this.items.length == 0;
+        return this.items.length === 0;
     }
 
     //Tamanho da Stack
@@ -47,7 +47,7 @@ class Stack {
         let str = "";
         for (let i = 0; i < this.items.length; i++) {
             str += this.items[i];
-            if(i != this.items.length - 1) str += " ";
+            if(i !== this.items.length - 1) str += " ";
         }
         return str;
     }

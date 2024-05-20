@@ -1,11 +1,11 @@
-const { isOperator, isNumber, operation, precedence, isOperand, replaceAll } = require("./uteis");
+const { isOperator, isNumber, operation, precedence, isOperand } = require("./uteis");
 const Stack = require('./stack');
 
 function postFixEvaluation(expression){
 
     const stack = new Stack();
 
-    if (expression == "")
+    if (expression === "")
         throw new Error("Expressão pós-fixa vazia");
 
     const tokens = expression.split(" ");
@@ -27,7 +27,7 @@ function postFixEvaluation(expression){
                 
                 stack.push(result)
             } else {
-                if(!(token == "" || token == " "))
+                if(!(token === "" || token === " "))
                     throw new Error(`Operador desconhecido: ${token}`);
             }
         }
@@ -46,7 +46,7 @@ function postFixEvaluation(expression){
 
 function inFixEvaluation(expression) {
 
-    if (expression == "")
+    if (expression === "")
         throw new Error("Expressão infixa vazia");
 
 

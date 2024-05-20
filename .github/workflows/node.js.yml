@@ -17,15 +17,15 @@ jobs:
         node: [ 14, 16, 18 ]
     name: Node ${{ matrix.node }} sample
     steps:
+      - name: Check for package-lock.json
+        run: ls -la ./calculadora/
       - uses: actions/checkout@v4
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: 'npm'
-          cache-dependency-path: calculadora/package-lock.json
+          cache-dependency-path: ./calculadora/package-lock.json
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
-      - name: Check for package-lock.json
-        run: ls -la calculadora/

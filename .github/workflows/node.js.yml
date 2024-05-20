@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd resolvedor-expressao-posfixa-infixa-web/calculadora
+    - run: cd ./calculadora
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test

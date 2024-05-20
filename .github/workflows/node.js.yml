@@ -19,7 +19,6 @@ jobs:
     steps:
       - name: Check for package-lock.json
         run: ls
-        run: ls -la ./calculadora/
       - uses: actions/checkout@v4
       - name: Setup node
         uses: actions/setup-node@v4

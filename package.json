@@ -60,6 +60,5 @@
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/elissandro13/resolvedor-expressao-posfixa-infixa-web/issues"
-    },
-    "homepage": "https://github.com/elissandro13/resolvedor-expressao-posfixa-infixa-web#readme"
+    }
 }

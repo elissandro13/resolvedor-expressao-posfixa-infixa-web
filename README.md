@@ -1,5 +1,5 @@
 # resolvedor-expressao-posfixa-infixa-web
-Um resolver de expressões numéricas (infixas e posfixas). O sistema tem suporte a modificação da representação da expressão numérica, assim como a possibilidade de solução automática da expressão.
+Um resolvedor de expressões numéricas (infixas e posfixas). O sistema tem suporte a modificação da representação da expressão numérica, assim como a possibilidade de solução automática da expressão. Inicialmente, a expressão esperada pelo resolver por padrão é seguindo a Notação Infixa. Para mudar a notação para Posfixa, é necessário clicar no botão "PostFix", da mesma forma, se estamos na notação Posfixa, para mudar para a Infixa, basta clicar no botão "Infix".
 
 ## Integrantes do Grupos
 * Elissandro Caetano Júnior
@@ -15,7 +15,7 @@ Um resolver de expressões numéricas (infixas e posfixas). O sistema tem suport
 ## Converter para Notação Infixa: 
 * Esta operação deve converter a expressão armazenada no programa para a notação infixa com parênteses. Mais informações obre essa notação podem ser encontradas em https://pt.wikipedia.org/wiki/Notação_infixa
 ## Resolver Expressão: 
-* Esta operação deve resolver a expressão armazenada e apresentar o valor numérico final correspondente a computação da expressão.
+* Esta operação deve resolver a expressão armazenada e apresentar o valor numérico final correspondente a computação da expressão. Para resolver uma expressão na notação Posfixa, é necessário que exista um espaço entre os números e os operadores presentes na expressão.
 
 
 ## Exemplo Entradas

@@ -3,6 +3,7 @@ import Button from './Button';
 import Display from './Display';
 import './Calculator.css';
 import { postFixEvaluation, inFixEvaluation } from '../utils/resolveExpressoes';
+import { convertPostfixToInfix, convertInfixToPostFix} from '../utils/converteExpressoes';
 
 const Calculator = () => {
   const [input, setInput] = useState('');
@@ -32,9 +33,27 @@ const Calculator = () => {
     } else if (value === 'C') {
       setInput('');
     } else if (value === 'PostFix') {
-      setMode('postfix');
+        if (mode === 'infix') {
+          try {
+            setInput(convertInfixToPostFix(input));
+            setMode('postfix');
+          } catch (error) {
+            setInput('Error');
+          }
+        } else {
+          setMode('postfix');
+        }
     } else if (value === 'InFix') {
-      setMode('infix');
+      if (mode === 'postfix') {
+        try {
+          setInput(convertPostfixToInfix(input));
+          setMode('infix');
+        } catch (error) {
+          setInput('Error');
+        }
+      } else {
+        setMode('infix');
+      }
     } else if (value === 'Espaço') {
       setInput(input + ' ');
     } else if (value === 'Backspace') {

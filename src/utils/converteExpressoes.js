@@ -3,6 +3,9 @@ const {isOperator, isNumber, isOperand, precedence, replaceAll} = require("./ute
 
 function convertPostfixToInfix(expression) {
     const stack = new Stack();
+
+    if(expression === "")
+        return ""
     
     const tokens = expression.split(" ");
     

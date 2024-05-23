@@ -20,12 +20,15 @@ const Calculator = () => {
   }, [input]);  
 
   const handleClick = (value) => {
+
+    var currentInput = input === 'Error' ? '' : input
+
     if (value === '=') {
       try {
         if (mode === 'postfix') {
-          setInput(postFixEvaluation(input).toString());
+          setInput(postFixEvaluation(currentInput).toString());
         } else if (mode === 'infix') {
-          setInput(inFixEvaluation(input).toString());
+          setInput(inFixEvaluation(currentInput).toString());
         }
       } catch (error) {
         setInput('Error');
@@ -34,9 +37,9 @@ const Calculator = () => {
       setInput('');
     } else if (value === 'PostFix') {
         if (mode === 'infix') {
+          setMode('postfix');
           try {
-            setInput(convertInfixToPostFix(input));
-            setMode('postfix');
+            setInput(convertInfixToPostFix(currentInput));
           } catch (error) {
             setInput('Error');
           }
@@ -45,9 +48,9 @@ const Calculator = () => {
         }
     } else if (value === 'InFix') {
       if (mode === 'postfix') {
+        setMode('infix');
         try {
-          setInput(convertPostfixToInfix(input));
-          setMode('infix');
+          setInput(convertPostfixToInfix(currentInput));
         } catch (error) {
           setInput('Error');
         }
@@ -55,11 +58,11 @@ const Calculator = () => {
         setMode('infix');
       }
     } else if (value === 'Espaço') {
-      setInput(input + ' ');
+      setInput(currentInput + ' ');
     } else if (value === 'Backspace') {
-      setInput(input.slice(0, -1));
+      setInput(currentInput.slice(0, -1));
     } else {
-      setInput(input + value);
+      setInput(currentInput + value);
     }
   };
 

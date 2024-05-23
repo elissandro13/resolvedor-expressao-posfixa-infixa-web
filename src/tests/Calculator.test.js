@@ -22,19 +22,16 @@ const clickButton = (text, getByText) => {
   }
 }
 
-type NumberDataSet = [number];
-describe.each<NumberDataSet>([
-  ['0'], ['1'], ['2'], ['3'], ['4'], ['5'], ['6'], ['7'], ['8'], ['9']
+describe.each([
+  [0], [1], [2], [3], [4], [5], [6], [7], [8], [9]
 ])('Button %i', (number) => {
   test(`has numeric button ${number}`, () => {
     const { getByText } = render(<Calculator />);
-    expect(getByText(number)).toBeInTheDocument();
+    expect(getByText(number.toString())).toBeInTheDocument();
   });
 });
 
-
-type ComponentDataSet = [component];
-describe.each<ComponentDataSet>([
+describe.each([
   ['/'], ['+'], ['*'], ['-'], ['='], ['C'], ['Espaço'], ['Backspace'], ['PostFix'], ['InFix'], ['('], [')'], ['.']
 ])('Button %i', (component) => {
   test(`renders calculator component ${component}`, () => {

@@ -7,7 +7,7 @@ function convertPostfixToInfix(expression) {
     const tokens = expression.split(" ");
     
     for (let token of tokens) {
-        if (token == "" || token == " ")
+        if (token === "" || token === " ")
             continue;
         else if (isNumber(token)) {
             stack.push(token); // Se o token for um número, empilhe-o

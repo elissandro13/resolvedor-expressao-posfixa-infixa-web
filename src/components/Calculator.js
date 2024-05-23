@@ -82,8 +82,10 @@ const Calculator = () => {
         {['(', ')', 'C', 'Espaço'].map((val) => (
           <Button key={val} value={val} onClick={handleClick} />
         ))}
-        <Button value="PostFix" onClick={handleClick} />
-        <Button value="InFix" onClick={handleClick} />
+        <Button value="PostFix" onClick={handleClick} 
+          className={mode === 'postfix' ? 'active' : ''}/>
+        <Button value="InFix" onClick={handleClick} 
+          className={mode === 'infix' ? 'active' : ''} />
         <Button value="Backspace" onClick={handleClick} />
       </div>
     </div>

@@ -22,30 +22,25 @@ const clickButton = (text, getByText) => {
   }
 }
 
-
-test('has numeric buttons from 0 to 9', () => {
-  const { getByText } = render(<Calculator />);
-
-  for (let i = 0; i <= 9; i++) {
-    expect(getByText(i.toString())).toBeInTheDocument();
-  }
+type NumberDataSet = [number];
+describe.each<NumberDataSet>([
+  ['0'], ['1'], ['2'], ['3'], ['4'], ['5'], ['6'], ['7'], ['8'], ['9']
+])('Button %i', (number) => {
+  test(`has numeric button ${number}`, () => {
+    const { getByText } = render(<Calculator />);
+    expect(getByText(number)).toBeInTheDocument();
+  });
 });
 
-test('renders calculator component', () => {
-  const { getByText } = render(<Calculator />);
-  expect(getByText('/')).toBeInTheDocument();
-  expect(getByText('+')).toBeInTheDocument();
-  expect(getByText('*')).toBeInTheDocument();
-  expect(getByText('-')).toBeInTheDocument();
-  expect(getByText('=')).toBeInTheDocument();
-  expect(getByText('C')).toBeInTheDocument();
-  expect(getByText('Espaço')).toBeInTheDocument();
-  expect(getByText('Backspace')).toBeInTheDocument();
-  expect(getByText('PostFix')).toBeInTheDocument();
-  expect(getByText('InFix')).toBeInTheDocument();
-  expect(getByText('(')).toBeInTheDocument();
-  expect(getByText(')')).toBeInTheDocument();
-  expect(getByText('.')).toBeInTheDocument();
+
+type ComponentDataSet = [component];
+describe.each<ComponentDataSet>([
+  ['/'], ['+'], ['*'], ['-'], ['='], ['C'], ['Espaço'], ['Backspace'], ['PostFix'], ['InFix'], ['('], [')'], ['.']
+])('Button %i', (component) => {
+  test(`renders calculator component ${component}`, () => {
+    const { getByText } = render(<Calculator />);
+    expect(getByText(component)).toBeInTheDocument();
+  });
 });
 
 test('button click updates display', () => {

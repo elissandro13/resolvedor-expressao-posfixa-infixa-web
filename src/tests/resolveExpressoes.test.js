@@ -42,22 +42,22 @@ describe('postFixEvaluation', () => {
     });
   
     test('Avaliar expressão vazia', () => { 
-      expect(() => postFixEvaluation('')).toThrowError(new Error('Expressão pós-fixa vazia'));
+      expect(() => postFixEvaluation('')).toThrow(new Error('Expressão pós-fixa vazia'));
     });
   
     test('Avaliar expressão com operando inválido', () => { 
-      expect(() => postFixEvaluation('abc 2 +')).toThrowError(new Error('Operador desconhecido: abc'));
+      expect(() => postFixEvaluation('abc 2 +')).toThrow(new Error('Operador desconhecido: abc'));
     });
   
     test('Avaliar expressão com operador inválido', () => { 
-      expect(() => postFixEvaluation('2 3 @')).toThrowError(new Error('Operador desconhecido: @'));
+      expect(() => postFixEvaluation('2 3 @')).toThrow(new Error('Operador desconhecido: @'));
     });
   
     test('Avaliar expressão com contagem incorreta de operandos', () => { 
-      expect(() => postFixEvaluation('2 3 + 4')).toThrowError(new Error('Expressão pós-fixa inválida'));
+      expect(() => postFixEvaluation('2 3 + 4')).toThrow(new Error('Expressão pós-fixa inválida'));
     });
   
-    test('Deve avaliar uma expressão pós-fixa com todas as operações', () => {
+    test('Deve avaliar uma expressão pós-fixa com todas as operações 5 2 + 3 * 6 -', () => {
         const expression = "5 2 + 3 * 6 -";
         // Passos:
         // 1. 5 + 2 = 7
@@ -66,7 +66,7 @@ describe('postFixEvaluation', () => {
         expect(postFixEvaluation(expression)).toBe(15);
     });
 
-    test('Deve avaliar uma expressão pós-fixa com todas as operações', () => {
+    test('Deve avaliar uma expressão pós-fixa com todas as operações 5 2 + 3 * 6 /', () => {
         const expression = "5 2 + 3 * 6 /";
         // Passos:
         // 1. 5 + 2 = 7
@@ -75,17 +75,17 @@ describe('postFixEvaluation', () => {
         expect(postFixEvaluation(expression)).toBe(3.5);
       });
 
-      test('Deve avaliar a expressão pós-fixa corretamente com número float', () => {
+      test('Deve avaliar a expressão pós-fixa corretamente com número float 9.874522 7.929620 * 8.681109 + 5.303303 / 3.118387 7.559106 + 7.215866 / +', () => {
         const expression = "9.874522 7.929620 * 8.681109 + 5.303303 / 3.118387 7.559106 + 7.215866 / +";
         expect(postFixEvaluation(expression)).toBeCloseTo(17.878824);
       });
 
-      test('Deve avaliar a expressão pós-fixa complexa corretamente com número float', () => {
+      test('Deve avaliar a expressão pós-fixa complexa corretamente com número float 2.337697 6.086307 - 0.125789 - 9.071004 4.981880 * /', () => {
         const expression = "2.337697 6.086307 - 0.125789 - 9.071004 4.981880 * /";
         expect(postFixEvaluation(expression)).toBeCloseTo(-0.0857345);
       });
 
-      test('Deve avaliar a expressão pós-fixa complexa corretamente com número float', () => {
+      test('Deve avaliar a expressão pós-fixa complexa corretamente com número float 7.325484 2.298093 2.321958 / 4.759999 * *', () => {
         const expression = "7.325484 2.298093 2.321958 / 4.759999 * *";
         expect(postFixEvaluation(expression)).toBeCloseTo(34.5109);
       });
@@ -168,7 +168,7 @@ describe('inFixEvaluation', () => {
   });
 
   test('Avaliar expressão infixa vazia', () => { 
-    expect(() => inFixEvaluation('')).toThrowError(new Error('Expressão infixa vazia'));
+    expect(() => inFixEvaluation('')).toThrow(new Error('Expressão infixa vazia'));
   });
 
   test('Deve avaliar uma expressão infixa com parênteses e o primeiro termo negativo', () => {

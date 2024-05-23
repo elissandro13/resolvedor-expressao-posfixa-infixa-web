@@ -12,11 +12,11 @@ describe('convertPostfixToInfix', () => {
     });
   
     test('Deve converter uma expressão pós-fixa com todas as operações para infixa', () => {
-      const expression = "2.337697 6.086307 - 0.125789 - 9.071004 4.981880 * /";
-      expect(convertPostfixToInfix(expression)).toBe("( ( ( 2.337697 - 6.086307 ) - 0.125789 ) / ( 9.071004 * 4.981880 ) )");
+      const expression = "2.337697 6.086307 + 0.125789 - 9.071004 4.981880 * /";
+      expect(convertPostfixToInfix(expression)).toBe("( ( ( 2.337697 + 6.086307 ) - 0.125789 ) / ( 9.071004 * 4.981880 ) )");
     });
 
-    test('Deve converter uma expressão pós-fixa com todas as operações para infixa', () => {
+    test('Deve converter uma expressão pós-fixa com múltiplas operações para infixa', () => {
       const expression = "7.325484 2.298093 2.321958 / 4.759999 * *";
       expect(convertPostfixToInfix(expression)).toBe("( 7.325484 * ( ( 2.298093 / 2.321958 ) * 4.759999 ) )");
     });
@@ -84,19 +84,19 @@ describe('convertInfixToPostFix', () => {
     expect(convertInfixToPostFix(expression)).toBe(expected);
   });
 
-  test('Deve converter expressão infixa complexa para pós-fixa', () => {
+  test('Deve converter expressão infixa 2 + 3 * 4 - 5 / 6 para pós-fixa', () => {
     const expression = "2 + 3 * 4 - 5 / 6";
     const expected = "2 3 4 * + 5 6 / -";
     expect(convertInfixToPostFix(expression)).toBe(expected);
   });
 
-  test('Deve converter expressão infixa complexa 2 para pós-fixa', () => {
+  test('Deve converter expressão infixa complexa ( 7.325484 * ( ( 2.298093 / 2.321958 ) * 4.759999 ) ) para pós-fixa', () => {
     const expression = "( 7.325484 * ( ( 2.298093 / 2.321958 ) * 4.759999 ) )";
     const expected = "7.325484 2.298093 2.321958 / 4.759999 * *";
     expect(convertInfixToPostFix(expression)).toBe(expected);
   });
 
-  test('Deve converter expressão infixa complexa 3 para pós-fixa', () => {
+  test('Deve converter expressão infixa complexa ( ( ( ( 2.337697 ) - ( 6.086307 ) ) - ( 0.125789 ) ) / ( ( 9.071004 ) * ( 4.981880 ) ) ) para pós-fixa', () => {
     const expression = "( ( ( ( 2.337697 ) - ( 6.086307 ) ) - ( 0.125789 ) ) / ( ( 9.071004 ) * ( 4.981880 ) ) )";
     const expected = "2.337697 6.086307 - 0.125789 - 9.071004 4.981880 * /";
     expect(convertInfixToPostFix(expression)).toBe(expected);

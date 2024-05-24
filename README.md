@@ -19,10 +19,52 @@ Um resolvedor de expressões numéricas (infixas e posfixas). O sistema tem supo
 
 
 ## Exemplo Entradas
-TO-DO
+Exemplos de expressões infixas e suas versões posfixas:
+
+Expressão Infixa: 2 + 3
+
+    Expressão Posfixa: 2 3 +
+
+Expressão Infixa: 5 * (6 + 2)
+
+    Expressão Posfixa: 5 6 2 + *
+
+Expressão Infixa: (1 + 2) * (3 + 4)
+
+    Expressão Posfixa: 1 2 + 3 4 + *
 
 ## Estrtura
-To-DO
+Diretórios Principais
+
+    build/: Contém os arquivos gerados após a compilação do projeto.
+
+    public/: Armazena arquivos estáticos como o favicon, o HTML principal, e outros que não passam pelo processo de build do Webpack.
+
+    src/: Código-fonte da aplicação, incluindo JavaScript, CSS, e imagens.
+        components/: Componentes React como botões, a calculadora e o display.
+        utils/: Funções auxiliares e lógicas de negócio, como conversão e resolução de expressões.
+
+Arquivos de Configuração e Outros Arquivos
+
+    jest.config.js: Configuração dos testes automatizados com Jest.
+    LICENSE: Licença de uso do software.
+    package.json e package-lock.json: Gerenciam as dependências do projeto e scripts de build e teste.
+    README.md: Documentação introdutória do projeto, incluindo descrição, como usar, e como contribuir.
+
+Subdiretórios e Arquivos Importantes em src/
+
+    App.js e App.css: Componente principal da aplicação React e seu respectivo estilo.
+    index.js e index.css: Ponto de entrada da aplicação e estilos globais.
+    logo.svg: Logo utilizado na aplicação.
+    reportWebVitals.js e setupTests.js: Utilitários para performance e configuração inicial dos testes.
+
+Diretório de Testes
+
+    tests/: Contém os testes unitários para os componentes e funções utilitárias, garantindo que as funcionalidades principais operem conforme esperado.
+
+Diretório de Utilidades (utils/)
+
+    Arquivos de lógica específica: converteExpressoes.js, resolveExpressoes.js, stack.js, e uteis.js que lidam, respectivamente, com a conversão de notações, resolução de expressões, operações de pilha, e outras funções auxiliares.
 
 ## Uso
 To-Do

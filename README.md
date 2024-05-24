@@ -70,8 +70,8 @@ Diretórios Principais
     public/: Armazena arquivos estáticos como o favicon, o HTML principal, e outros que não passam pelo processo de build do Webpack.
 
     src/: Código-fonte da aplicação, incluindo JavaScript, CSS, e imagens.
-        components/: Componentes React como botões, a calculadora e o display.
-        utils/: Funções auxiliares e lógicas de negócio, como conversão e resolução de expressões.
+        - components/: Componentes React como botões, a calculadora e o display.
+        - utils/: Funções auxiliares e lógicas de negócio, como conversão e resolução de expressões.
 
 Arquivos de Configuração e Outros Arquivos
 

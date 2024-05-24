@@ -33,7 +33,7 @@ Expressão Infixa: (1 + 2) * (3 + 4)
 
     Expressão Posfixa: 1 2 + 3 4 + *
 
-## Estrtura
+## Estrutura
 Diretórios Principais
 
     build/: Contém os arquivos gerados após a compilação do projeto.
@@ -66,9 +66,10 @@ Diretório de Utilidades (utils/)
 
     Arquivos de lógica específica: converteExpressoes.js, resolveExpressoes.js, stack.js, e uteis.js que lidam, respectivamente, com a conversão de notações, resolução de expressões, operações de pilha, e outras funções auxiliares.
 
+
 ## Uso
-To-Do
-Site da Publicação
+Inicialmente a calculadora estará no modo Infix. Nesse modo ela é semelhante a uma calculadora normal, porém ao clicar no botão "PostFix" a expressão é convertida para a notação polonesa inversa. De forma semelhante, ao escrever uma expressão na notação Posfixa, ao clicar o botão Infix, convertemos para a notação Infixa e, nos dois casos, ao clicar em '=' nossa expressão é calculada levando em conta o modo que está ativo e o resultado é exibido.
+[Site da Publicação](https://elissandro13.github.io/resolvedor-expressao-posfixa-infixa-web/)
 
 
 

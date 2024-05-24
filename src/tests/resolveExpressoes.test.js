@@ -59,19 +59,11 @@ describe('postFixEvaluation', () => {
   
     test('Deve avaliar uma expressão pós-fixa com todas as operações', () => {
         const expression = "5 2 + 3 * 6 -";
-        // Passos:
-        // 1. 5 + 2 = 7
-        // 2. 7 * 3 = 21
-        // 3. 21 - 6 = 15
         expect(postFixEvaluation(expression)).toBe(15);
     });
 
     test('Deve avaliar uma expressão pós-fixa com todas as operações', () => {
         const expression = "5 2 + 3 * 6 /";
-        // Passos:
-        // 1. 5 + 2 = 7
-        // 2. 7 * 3 = 21
-        // 3. 21 / 6 = 3.5
         expect(postFixEvaluation(expression)).toBe(3.5);
       });
 

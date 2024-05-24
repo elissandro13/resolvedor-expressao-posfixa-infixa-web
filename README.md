@@ -7,14 +7,30 @@ Um resolvedor de expressões numéricas (infixas e posfixas). O sistema tem supo
 * Matheus Vaz Leal
 * Natan Ventura Menezes
 
+## Uso
+Inicialmente a calculadora estará no modo Infix. Nesse modo ela é semelhante a uma calculadora normal, porém ao clicar no botão "PostFix" a expressão é convertida para a notação polonesa inversa. De forma semelhante, ao escrever uma expressão na notação Posfixa, ao clicar o botão Infix, convertemos para a notação Infixa e, nos dois casos, ao clicar em '=' nossa expressão é calculada levando em conta o modo que está ativo e o resultado é exibido.
+[Site da Publicação](https://elissandro13.github.io/resolvedor-expressao-posfixa-infixa-web/)
 
-## Ler Expressão Numérica: 
+![demo (1)](https://github.com/elissandro13/resolvedor-expressao-posfixa-infixa-web/assets/54417372/f18653c7-97fd-49cf-96b5-b9f4fae51a1c)
+
+## Como rodar localmente
+
+```
+git clone https://github.com/elissandro13/resolvedor-expressao-posfixa-infixa-web.git
+cd resolvedor-expressao-posfixa-infixa-web
+npm install
+npm start
+
+```
+
+## Funções
+### Ler Expressão Numérica: 
 * Esta operação deve ler uma expressão numérica passada como argumento e armazenar essa expressão no programa. A expressão pode estar em notação infixa ou posfixa e o programa deve verificar se a expressão numérica é válida. Por exemplo, 3 + 4 é uma expressão válida, mas 2 + - x não é. E só deve armazenar a expressão se a mesma for válida 
-## Converter para Notação Posfixa: 
+### Converter para Notação Posfixa: 
 * Esta operação deve converter a expressão armazenada no programa para a notação posfixa. Mais informações sobre a notação posfixa podem ser encontradas em https://pt.wikipedia.org/wiki/Notacão_polonesa_inversa
-## Converter para Notação Infixa: 
+### Converter para Notação Infixa: 
 * Esta operação deve converter a expressão armazenada no programa para a notação infixa com parênteses. Mais informações obre essa notação podem ser encontradas em https://pt.wikipedia.org/wiki/Notação_infixa
-## Resolver Expressão: 
+### Resolver Expressão: 
 * Esta operação deve resolver a expressão armazenada e apresentar o valor numérico final correspondente a computação da expressão. Para resolver uma expressão na notação Posfixa, é necessário que exista um espaço entre os números e os operadores presentes na expressão.
 
 
@@ -67,13 +83,13 @@ Diretório de Utilidades (utils/)
     Arquivos de lógica específica: converteExpressoes.js, resolveExpressoes.js, stack.js, e uteis.js que lidam, respectivamente, com a conversão de notações, resolução de expressões, operações de pilha, e outras funções auxiliares.
 
 
-## Uso
-Inicialmente a calculadora estará no modo Infix. Nesse modo ela é semelhante a uma calculadora normal, porém ao clicar no botão "PostFix" a expressão é convertida para a notação polonesa inversa. De forma semelhante, ao escrever uma expressão na notação Posfixa, ao clicar o botão Infix, convertemos para a notação Infixa e, nos dois casos, ao clicar em '=' nossa expressão é calculada levando em conta o modo que está ativo e o resultado é exibido.
-[Site da Publicação](https://elissandro13.github.io/resolvedor-expressao-posfixa-infixa-web/)
 
 
 
 
 
-![demo (1)](https://github.com/elissandro13/resolvedor-expressao-posfixa-infixa-web/assets/54417372/f18653c7-97fd-49cf-96b5-b9f4fae51a1c)
+
+
+
+
 

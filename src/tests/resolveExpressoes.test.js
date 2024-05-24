@@ -75,12 +75,10 @@ describe('postFixEvaluation', () => {
       test('Deve avaliar a expressão pós-fixa complexa corretamente com número float', () => {
         const expression = "2.337697 6.086307 - 0.125789 - 9.071004 4.981880 * /";
         expect(postFixEvaluation(expression)).toBeCloseTo(-0.0857345);
+        const expression2 = "7.325484 2.298093 2.321958 / 4.759999 * *";
+        expect(postFixEvaluation(expression2)).toBeCloseTo(34.5109);
       });
 
-      test('Deve avaliar a expressão pós-fixa complexa corretamente com número float', () => {
-        const expression = "7.325484 2.298093 2.321958 / 4.759999 * *";
-        expect(postFixEvaluation(expression)).toBeCloseTo(34.5109);
-      });
 });
 
 
@@ -112,7 +110,7 @@ describe('inFixEvaluation', () => {
     }).toThrow(new Error("Divisão por 0 impossível"));
   });
 
-  test('Deve avaliar uma expressão infixa complexa', () => {
+  test('Deve avaliar uma expressão infixa complexa com as 4 operações', () => {
     const expression = "3 + 5 * 2 - 8 / 4";
     expect(inFixEvaluation(expression)).toBe(11);
   });
@@ -176,11 +174,9 @@ describe('inFixEvaluation', () => {
   test('Deve avaliar uma expressão complexa', () => {
     const expression = "( ( ( 2.337697 - 6.086307 ) - 0.125789 ) / ( 9.071004 * 4.981880 ) )";
     expect(inFixEvaluation(expression)).toBeCloseTo(-0.0857345);
-  });
+    const expression2 = "( 7.325484 * ( ( 2.298093 / 2.321958 ) * 4.759999 ) )";
+    expect(inFixEvaluation(expression2)).toBeCloseTo(34.5109);
 
-  test('Deve avaliar uma segunda expressão complexa', () => {
-    const expression = "( 7.325484 * ( ( 2.298093 / 2.321958 ) * 4.759999 ) )";
-    expect(inFixEvaluation(expression)).toBeCloseTo(34.5109);
   });
 
 });

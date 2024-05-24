@@ -13,6 +13,12 @@ Inicialmente a calculadora estará no modo Infix. Nesse modo ela é semelhante a
 
 ![demo (1)](https://github.com/elissandro13/resolvedor-expressao-posfixa-infixa-web/assets/54417372/f18653c7-97fd-49cf-96b5-b9f4fae51a1c)
 
+## Tecnologias Utilizadas
+
+- Backend: NodeJS
+- Frontend: ReactJS
+- Framework de teste: Jest
+
 ## Como rodar localmente
 
 ```

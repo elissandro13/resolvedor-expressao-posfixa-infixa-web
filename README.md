@@ -1,4 +1,6 @@
 # resolvedor-expressao-posfixa-infixa-web
+[![codecov](https://codecov.io/github/elissandro13/resolvedor-expressao-posfixa-infixa-web/graph/badge.svg?token=N22S8U5HUY)](https://codecov.io/github/elissandro13/resolvedor-expressao-posfixa-infixa-web)
+
 Um resolvedor de expressões numéricas (infixas e posfixas). O sistema tem suporte a modificação da representação da expressão numérica, assim como a possibilidade de solução automática da expressão. Inicialmente, a expressão esperada pelo resolver por padrão é seguindo a Notação Infixa. Para mudar a notação para Posfixa, é necessário clicar no botão "PostFix", da mesma forma, se estamos na notação Posfixa, para mudar para a Infixa, basta clicar no botão "Infix".
 
 ## Integrantes do Grupos
